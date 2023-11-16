@@ -1,7 +1,6 @@
 import katex from 'katex';
 
-const inlineStartRule = /(\s|^)\${1,2}(?!\$)/;
-const inlineRule = /^(\${1,2})(?!\$)((?:\\.|[^\\\n])*?(?:\\.|[^\\\n\$]))\1(?=[\s?!\.,:]|$)/;
+const inlineRule = /^(\${1,2})(?!\$)((?:\\.|[^\\\n])*?(?:\\.|[^\\\n\$]))\1(?=[\s?!\.,:？！。，：]|$)/;
 const blockRule = /^(\${1,2})\n((?:\\[^]|[^\\])+?)\n\1(?:\n|$)/;
 
 export default function(options = {}) {
@@ -22,16 +21,24 @@ function inlineKatex(options, renderer) {
     name: 'inlineKatex',
     level: 'inline',
     start(src) {
-      const match = src.match(inlineStartRule);
-      if (!match) {
-        return;
-      }
+      let index;
+      let indexSrc = src;
 
-      const index = match.index + match[1].length;
-      const possibleKatex = src.substring(index);
+      while (indexSrc) {
+        index = indexSrc.indexOf('$');
+        if (index === -1) {
+          return;
+        }
 
-      if (possibleKatex.match(inlineRule)) {
-        return index;
+        if (index === 0 || indexSrc.charAt(index - 1) === ' ') {
+          const possibleKatex = indexSrc.substring(index);
+
+          if (possibleKatex.match(inlineRule)) {
+            return index;
+          }
+        }
+
+        indexSrc = indexSrc.substring(index + 1).replace(/^\$+/, '');
       }
     },
     tokenizer(src, tokens) {
@@ -53,7 +60,6 @@ function blockKatex(options, renderer) {
   return {
     name: 'blockKatex',
     level: 'block',
-    start(src) { return src.indexOf('\n$'); },
     tokenizer(src, tokens) {
       const match = src.match(blockRule);
       if (match) {
