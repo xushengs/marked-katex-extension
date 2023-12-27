@@ -1,6 +1,6 @@
 {
   "name": "marked-katex-extension",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "MarkedJS extesion to render katex",
   "main": "./lib/index.cjs",
   "module": "./src/index.js",
@@ -43,35 +43,35 @@
   },
   "homepage": "https://github.com/UziTech/marked-katex-extension#readme",
   "peerDependencies": {
-    "marked": ">=4 <11"
+    "marked": ">=4 <12"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.3",
-    "@babel/preset-env": "^7.23.3",
-    "@markedjs/testutils": "9.1.5-0",
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "@markedjs/testutils": "11.0.0-0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.1.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^9.2.3",
-    "@semantic-release/npm": "^11.0.1",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/npm": "^11.0.2",
     "@semantic-release/release-notes-generator": "^12.1.0",
     "babel-jest": "^29.7.0",
     "cheerio": "^1.0.0-rc.12",
-    "eslint": "^8.53.0",
+    "eslint": "^8.56.0",
     "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-n": "^16.3.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.5.0",
     "eslint-plugin-promise": "^6.1.1",
     "jest-cli": "^29.7.0",
-    "marked": "^10.0.0",
+    "marked": "^11.1.0",
     "node-fetch": "^3.3.2",
-    "rollup": "^4.4.0",
-    "semantic-release": "^22.0.7",
-    "tsd": "^0.29.0"
+    "rollup": "^4.9.1",
+    "semantic-release": "^22.0.12",
+    "tsd": "^0.30.0"
   },
   "dependencies": {
-    "@types/katex": "^0.16.6",
+    "@types/katex": "^0.16.7",
     "katex": "^0.16.9"
   }
 }
